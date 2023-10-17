@@ -1,7 +1,7 @@
 # Importamos librerias
 import cv2 
 import pytesseract   #Libreria deteccion de texto
-import re
+import re 
 
 # Variables
 cuadro = 100
@@ -29,8 +29,8 @@ def texto(image):
     sececol = r'COLOMBIA'
     sececol2 = r'IDENTIFICACION'
 
-    # Palabras clave Salvador
-    secesal = r'SALVADO'
+    # Palabras clave carnet unisucre
+    secesal = r'Universidad de sucre'
 
     buscecol = re.findall(sececol, texto)
     buscecol2 = re.findall(sececol2, texto)
@@ -52,8 +52,8 @@ while True:
     ret, frame = cap.read()
 
     # 'Interfaz'
-    cv2.putText(frame, 'Ubique el documento de identidad', (458, 80), cv2.FONT_HERSHEY_SIMPLEX, 0.71, (0, 255, 0), 2)
-    cv2.rectangle(frame, (cuadro, cuadro), (1280 - cuadro, 720 - cuadro), (0, 255, 0), 2)
+    cv2.putText(frame, 'Ubique el documento de identidad', (100, 80), cv2.FONT_HERSHEY_SIMPLEX, 0.71, (0, 255, 0), 2)
+    cv2.rectangle(frame, (cuadro, cuadro), (650 - cuadro, 550 - cuadro), (0, 255, 0), 2)
 
     # Reset ID
     if doc == 0:
@@ -65,8 +65,8 @@ while True:
         print('Cedula de Ciudadania Colombiana')
 
     elif doc == 2:
-        cv2.putText(frame, 'DOCUMENTO SALVADORENO', (470, 750 - cuadro), cv2.FONT_HERSHEY_SIMPLEX, 0.71,(187, 170, 3), 2)
-        print('Documento Salvadoreño')
+        cv2.putText(frame, 'DOCUMENTO UNISUCRE', (470, 750 - cuadro), cv2.FONT_HERSHEY_SIMPLEX, 0.71,(187, 170, 3), 2)
+        print('Documento unisucre')
 
     t = cv2.waitKey(1)
     # Funcion Texto
@@ -86,5 +86,6 @@ while True:
 
 cap.release()
 cv2.destroyAllWindows()
+
 
 
